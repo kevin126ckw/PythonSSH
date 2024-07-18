@@ -3,6 +3,9 @@ import json
 # 是否开启调试模式
 debug = False
 
+# 提示用户确保Servers.txt文件未被打开，按回车继续
+input("Please make sure the Servers.txt is not open. Press enter to continue")
+
 # 打开服务器列表文件，以追加写方式打开
 ServerListFile = open("Servers.txt", "a+")
 
@@ -11,9 +14,6 @@ ServerListFile.seek(0)
 
 # 读取文件内容
 ServerListFileData = ServerListFile.read()
-
-# 提示用户确保Servers.txt文件未被打开，按回车继续
-input("Please make sure the Servers.txt is not open. Press enter to continue")
 
 # 如果调试模式开启，打印文件内容
 if debug:
