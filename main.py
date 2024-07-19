@@ -1,5 +1,6 @@
 import pexpect
 import json
+from termcolor import colored, cprint
 
 """
 
@@ -35,7 +36,6 @@ import json
 
 """
 
-
 # 是否开启调试模式
 debug = False
 
@@ -62,42 +62,42 @@ def print_server_info(info, server_data, server_num):
     :param server_num: 服务器编号。
     """
     if info == "name":
-        print("ServerName:", end="")
-        print(server_data[server_num]["name"])
+        print(colored("ServerName:", "yellow"), end="")
+        cprint(server_data[server_num]["name"], "green")
     elif info == "ip":
-        print("ServerIP:", end="")
-        print(server_data[server_num]["ip"])
+        print(colored("ServerIP:", "yellow"), end="")
+        cprint(server_data[server_num]["ip"], "green")
     elif info == "port":
-        print("ServerPort:", end="")
-        print(server_data[server_num]["port"])
+        print(colored("ServerPort:", "yellow"), end="")
+        cprint(server_data[server_num]["port"], "green")
     elif info == "username":
-        print("ServerUsername:", end="")
-        print(server_data[server_num]["username"])
+        print(colored("ServerUsername:", "yellow"), end="")
+        cprint(server_data[server_num]["username"], "green")
     elif info == "password":
-        print("ServerPassword:", end="")
-        print(server_data[server_num]["password"])
+        print(colored("ServerPassword:","yellow"), end="")
+        cprint(server_data[server_num]["password"], "green")
     elif info == "all":
-        print("ServerName:", end="")
-        print(server_data[server_num]["name"])
-        print("ServerIP:", end="")
-        print(server_data[server_num]["ip"])
-        print("ServerPort:", end="")
-        print(server_data[server_num]["port"])
-        print("ServerUsername:", end="")
-        print(server_data[server_num]["username"])
-        print("ServerPassword:", end="")
-        print(server_data[server_num]["password"])
+        print(colored("ServerName:", "yellow"), end="")
+        cprint(server_data[server_num]["name"], "green")
+        print(colored("ServerIP:", "yellow"), end="")
+        cprint(server_data[server_num]["ip"], "green")
+        print(colored("ServerPort:", "yellow"), end="")
+        cprint(server_data[server_num]["port"], "green")
+        print(colored("ServerUsername:", "yellow"), end="")
+        cprint(server_data[server_num]["username"], "green")
+        print(colored("ServerPassword:","yellow"), end="")
+        cprint(server_data[server_num]["password"], "green")
 
 
 # 调试模式下打印第一台服务器的名称
 if debug:
     print_server_info("name", ServerList, 0)
 # 打印服务器列表
-print("ServerList:")
+cprint("ServerList:","light_blue")
 # 打印空行
 print()
 for ServerNum in range(len(ServerList)):
-    print("ServerNum:", ServerNum)
+    cprint(f"ServerNum:{colored(ServerNum, "blue")}", "red")
     # 打印每台服务器的所有信息
     print_server_info("all", ServerList, ServerNum)
     # 打印空行
@@ -106,7 +106,7 @@ for ServerNum in range(len(ServerList)):
 while True:
     try:
         # 获取用户输入的服务器编号
-        ServerNum = int(input("ServerNum:"))
+        ServerNum = int(input(colored("ServerNum:","light_grey")))
         # 使用ssh登录指定的服务器
         shell = pexpect.spawn(
             f'ssh -p {ServerList[ServerNum]["port"]} {ServerList[ServerNum]["username"]}@{ServerList[ServerNum]["ip"]}')
