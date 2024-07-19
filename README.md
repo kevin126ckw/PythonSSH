@@ -6,6 +6,7 @@
 
 - Python 3.x
 - `pexpect`库
+- `termcolor`库
 
 ## 运行方法
 
@@ -19,6 +20,7 @@
 - 克隆或下载此仓库。
 - 确保您的环境中安装了Python 3.x。
 - 安装`pexpect`库（如果尚未安装）：`pip install pexpect`。
+- 安装`termcolor`库（如果尚未安装）：`pip install termcolor`。
 
 ## 许可证
 
