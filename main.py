@@ -1,10 +1,8 @@
-import os
-
 import pexpect
 import json
 from termcolor import colored, cprint
 
-r"""
+"""
 
                              _ooOoo_
                             o8888888o
@@ -35,12 +33,12 @@ r"""
                    奔驰宝马贵者趣，公交自行程序员。
                    别人笑我忒疯癫，我笑自己命太贱；
                    不见满街漂亮妹，哪个归得程序员？
+
 """
 
 # 是否开启调试模式
 debug = False
-if debug:
-    cprint("Debug Enabled", "yellow", attrs=["bold"])
+
 # 打开服务器列表文件
 ServerListFile = open("Servers.txt", "r")
 # 读取文件内容
@@ -76,7 +74,7 @@ def print_server_info(info, server_data, server_num):
         print(colored("ServerUsername:", "yellow"), end="")
         cprint(server_data[server_num]["username"], "green")
     elif info == "password":
-        print(colored("ServerPassword:", "yellow"), end="")
+        print(colored("ServerPassword:","yellow"), end="")
         cprint(server_data[server_num]["password"], "green")
     elif info == "all":
         print(colored("ServerName:", "yellow"), end="")
@@ -87,7 +85,7 @@ def print_server_info(info, server_data, server_num):
         cprint(server_data[server_num]["port"], "green")
         print(colored("ServerUsername:", "yellow"), end="")
         cprint(server_data[server_num]["username"], "green")
-        print(colored("ServerPassword:", "yellow"), end="")
+        print(colored("ServerPassword:","yellow"), end="")
         cprint(server_data[server_num]["password"], "green")
 
 
@@ -95,7 +93,7 @@ def print_server_info(info, server_data, server_num):
 if debug:
     print_server_info("name", ServerList, 0)
 # 打印服务器列表
-cprint("ServerList:", "light_blue")
+cprint("ServerList:","light_blue")
 # 打印空行
 print()
 for ServerNum in range(len(ServerList)):
@@ -108,36 +106,14 @@ for ServerNum in range(len(ServerList)):
 while True:
     try:
         # 获取用户输入的服务器编号
-        ServerNum = int(input(colored("ServerNum:", "light_grey")))
-        # 清屏
-        os.system("clear")
+        ServerNum = int(input(colored("ServerNum:","light_grey")))
         # 使用ssh登录指定的服务器
         shell = pexpect.spawn(
             f'ssh -p {ServerList[ServerNum]["port"]} {ServerList[ServerNum]["username"]}@{ServerList[ServerNum]["ip"]}')
         # 等待密码提示，输入密码后交互式登录
         shell.expect("password:")
-        if debug:
-            print("Detected password prompt")
         shell.sendline(ServerList[ServerNum]["password"])
-        if debug:
-            print("Password sent")
-            print("Dropping to interactive shell")
         shell.interact()
-        if debug:
-            print("interactive shell shutdown")
-        cprint("ServerList:", "light_blue")
-        # 打印空行
-        print()
-        for ServerNum in range(len(ServerList)):
-            cprint(f"ServerNum:{colored(ServerNum, "blue")}", "red")
-            # 打印每台服务器的所有信息
-            print_server_info("all", ServerList, ServerNum)
-            # 打印空行
-            print()
-    except KeyboardInterrupt:
-        # 当用户通过Ctrl+C中断程序时，优雅地退出程序
-        exit(0)
-
     finally:
         # 确保文件在程序结束时关闭
         ServerListFile.close()
