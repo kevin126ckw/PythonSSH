@@ -134,6 +134,8 @@ while True:
             print_server_info("all", ServerList, ServerNum)
             # 打印空行
             print()
+    except KeyboardInterrupt:
+        exit(0)
     finally:
         # 确保文件在程序结束时关闭
         ServerListFile.close()
