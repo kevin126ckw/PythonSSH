@@ -4,7 +4,7 @@ import pexpect
 import json
 from termcolor import colored, cprint
 
-"""
+r"""
 
                              _ooOoo_
                             o8888888o
