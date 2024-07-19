@@ -135,7 +135,9 @@ while True:
             # 打印空行
             print()
     except KeyboardInterrupt:
+        # 当用户通过Ctrl+C中断程序时，优雅地退出程序
         exit(0)
+
     finally:
         # 确保文件在程序结束时关闭
         ServerListFile.close()
