@@ -4,7 +4,7 @@ import pexpect
 import json
 from termcolor import colored, cprint
 
-"""
+r"""
 
                              _ooOoo_
                             o8888888o
@@ -38,7 +38,7 @@ from termcolor import colored, cprint
 """
 
 # 是否开启调试模式
-debug = True
+debug = False
 if debug:
     cprint("Debug Enabled", "yellow", attrs=["bold"])
 # 打开服务器列表文件
@@ -99,7 +99,7 @@ cprint("ServerList:", "light_blue")
 # 打印空行
 print()
 for ServerNum in range(len(ServerList)):
-    cprint(f"ServerNum:{colored(ServerNum, 'blue')}", "red")
+    cprint(f"ServerNum:{colored(ServerNum, "blue")}", "red")
     # 打印每台服务器的所有信息
     print_server_info("all", ServerList, ServerNum)
     # 打印空行
@@ -125,6 +125,15 @@ while True:
         shell.interact()
         if debug:
             print("interactive shell shutdown")
+        cprint("ServerList:", "light_blue")
+        # 打印空行
+        print()
+        for ServerNum in range(len(ServerList)):
+            cprint(f"ServerNum:{colored(ServerNum, "blue")}", "red")
+            # 打印每台服务器的所有信息
+            print_server_info("all", ServerList, ServerNum)
+            # 打印空行
+            print()
     finally:
         # 确保文件在程序结束时关闭
         ServerListFile.close()
