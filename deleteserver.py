@@ -1,10 +1,15 @@
 import json
+from defines import *
+
+ConfigFile = open("config.json", "r")
+ConfigFileData = ConfigFile.read()
+Config = json.loads(ConfigFileData)
 
 # 启用调试模式
-debug = True
+debug = Config["Debug"]
 
 # 打开服务器列表文件，以追加写方式打开
-ServerListFile = open("Servers.txt","a+")
+ServerListFile = open("Servers.json", "a+")
 
 # 将文件指针移到文件开头
 ServerListFile.seek(0)
@@ -17,44 +22,11 @@ ServerList = json.loads(ServerListFileData)
 if debug:
     print(ServerList)
 
-def print_server_info(info, server_data, server_num):
-    """
-    根据提供的信息类型，打印服务器的详细信息。
-
-    :param info: 信息类型（名称、IP、端口、用户名、密码或所有信息）。
-    :param server_data: 服务器数据列表。
-    :param server_num: 服务器编号。
-    """
-    if info == "name":
-        print("ServerName:", end="")
-        print(server_data[server_num]["name"])
-    elif info == "ip":
-        print("ServerIP:", end="")
-        print(server_data[server_num]["ip"])
-    elif info == "port":
-        print("ServerPort:", end="")
-        print(server_data[server_num]["port"])
-    elif info == "username":
-        print("ServerUsername:", end="")
-        print(server_data[server_num]["username"])
-    elif info == "password":
-        print("ServerPassword:", end="")
-        print(server_data[server_num]["password"])
-    elif info == "all":
-        print("ServerName:", end="")
-        print(server_data[server_num]["name"])
-        print("ServerIP:", end="")
-        print(server_data[server_num]["ip"])
-        print("ServerPort:", end="")
-        print(server_data[server_num]["port"])
-        print("ServerUsername:", end="")
-        print(server_data[server_num]["username"])
-        print("ServerPassword:", end="")
-        print(server_data[server_num]["password"])
-
-# 遍历服务器列表，打印每台服务器的所有信息
+cprint("ServerList:", "light_blue")
+# 打印空行
+print()
 for ServerNum in range(len(ServerList)):
-    print("ServerNum:", ServerNum)
+    cprint(f"ServerNum:{colored(ServerNum, "blue")}", "red")
     # 打印每台服务器的所有信息
     print_server_info("all", ServerList, ServerNum)
     # 打印空行

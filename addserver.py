@@ -4,10 +4,10 @@ import json
 debug = False
 
 # 提示用户确保Servers.txt文件未被打开，按回车继续
-input("Please make sure the Servers.txt is not open. Press enter to continue")
+input("Please make sure the Servers.json is not open. Press enter to continue")
 
 # 打开服务器列表文件，以追加写方式打开
-ServerListFile = open("Servers.txt", "a+")
+ServerListFile = open("Servers.json", "a+")
 
 # 将文件指针移到文件开头
 ServerListFile.seek(0)
