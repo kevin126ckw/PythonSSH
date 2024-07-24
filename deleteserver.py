@@ -1,11 +1,11 @@
 import json
 from defines import *
 
+# 是否开启调试模式
 ConfigFile = open("config.json", "r")
 ConfigFileData = ConfigFile.read()
 Config = json.loads(ConfigFileData)
 
-# 启用调试模式
 debug = Config["Debug"]
 
 # 打开服务器列表文件，以追加写方式打开

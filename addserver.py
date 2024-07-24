@@ -1,7 +1,11 @@
 import json
 
 # 是否开启调试模式
-debug = False
+ConfigFile = open("config.json", "r")
+ConfigFileData = ConfigFile.read()
+Config = json.loads(ConfigFileData)
+
+debug = Config["Debug"]
 
 # 提示用户确保Servers.txt文件未被打开，按回车继续
 input("Please make sure the Servers.json is not open. Press enter to continue")

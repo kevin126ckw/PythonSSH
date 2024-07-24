@@ -38,7 +38,11 @@ r"""
 """
 
 # 是否开启调试模式
-debug = False
+ConfigFile = open("config.json", "r")
+ConfigFileData = ConfigFile.read()
+Config = json.loads(ConfigFileData)
+
+debug = Config["Debug"]
 if debug:
     cprint("Debug Enabled", "yellow", attrs=["bold"])
 # 打开服务器列表文件
