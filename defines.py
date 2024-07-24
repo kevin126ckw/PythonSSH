@@ -1,4 +1,6 @@
 from termcolor import *
+
+
 def print_server_info(info, server_data, server_num):
     """
     打印服务器信息。
