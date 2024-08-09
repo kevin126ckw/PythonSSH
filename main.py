@@ -4,7 +4,7 @@ import pexpect
 import json
 from defines import *
 
-r"""
+a = r"""
 
                              _ooOoo_
                             o8888888o
@@ -45,6 +45,8 @@ Config = json.loads(ConfigFileData)
 debug = Config["Debug"]
 if debug:
     cprint("Debug Enabled", "yellow", attrs=["bold"])
+if debug:
+    print(a)
 # 打开服务器列表文件
 ServerListFile = open("Servers.json", "r")
 # 读取文件内容
