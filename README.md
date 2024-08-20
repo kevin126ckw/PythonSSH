@@ -22,6 +22,10 @@
 - 安装`pexpect`库（如果尚未安装）：`pip install pexpect`。
 - 安装`termcolor`库（如果尚未安装）：`pip install termcolor`。
 
+## 贡献者
+- [Kevinlels](https://github.com/kevin126ckw)
+
+
 ## 许可证
 
 本项目采用MIT许可证。请查看`LICENSE`文件了解更多信息。
