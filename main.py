@@ -1,7 +1,7 @@
 import os
 
 import pexpect
-import json
+
 from defines import *
 
 a = r"""
@@ -37,10 +37,7 @@ a = r"""
                    不见满街漂亮妹，哪个归得程序员？
 """
 
-# 是否开启调试模式
-ConfigFile = open("config.json", "r")
-ConfigFileData = ConfigFile.read()
-Config = json.loads(ConfigFileData)
+# 新版本已经将读取配置文件的代码移动到defines.py中
 
 debug = Config["Debug"]
 if debug:
