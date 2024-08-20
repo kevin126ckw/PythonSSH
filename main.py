@@ -94,6 +94,9 @@ while True:
         shell.interact()
         if debug:
             print("interactive shell shutdown")
+        # 如果配置文件中ClearScreenOnDisconnect为True，则清屏
+        if Config["ClearScreenOnDisconnect"]:
+            os.system("clear")
         cprint("ServerList:", "light_blue")
         # 打印空行
         print()
