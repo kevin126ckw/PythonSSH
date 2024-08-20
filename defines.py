@@ -1,5 +1,10 @@
 from termcolor import *
+import json
 
+# 是否开启调试模式
+ConfigFile = open("config.json", "r")
+ConfigFileData = ConfigFile.read()
+Config = json.loads(ConfigFileData)
 
 def print_server_info(info, server_data, server_num):
     """
@@ -16,22 +21,23 @@ def print_server_info(info, server_data, server_num):
         print(colored("ServerIP:", "yellow"), end="")
         cprint(server_data[server_num]["ip"], "green")
     elif info == "port":
-        print(colored("ServerPort:", "yellow"), end="")
-        cprint(server_data[server_num]["port"], "green")
+        if server_data[server_num]["port"] == "22":
+            pass
+        else:
+            print(colored("ServerPort:", "yellow"), end="")
+            cprint(server_data[server_num]["port"], "green")
     elif info == "username":
         print(colored("ServerUsername:", "yellow"), end="")
         cprint(server_data[server_num]["username"], "green")
     elif info == "password":
         print(colored("ServerPassword:", "yellow"), end="")
-        cprint(server_data[server_num]["password"], "green")
+        if Config["ShowPassword"]:
+            cprint(server_data[server_num]["password"], "green")
+        else:
+            cprint("*" * len(server_data[server_num]["password"]), "green")
     elif info == "all":
-        print(colored("ServerName:", "yellow"), end="")
-        cprint(server_data[server_num]["name"], "green")
-        print(colored("ServerIP:", "yellow"), end="")
-        cprint(server_data[server_num]["ip"], "green")
-        print(colored("ServerPort:", "yellow"), end="")
-        cprint(server_data[server_num]["port"], "green")
-        print(colored("ServerUsername:", "yellow"), end="")
-        cprint(server_data[server_num]["username"], "green")
-        print(colored("ServerPassword:", "yellow"), end="")
-        cprint(server_data[server_num]["password"], "green")
+        print_server_info("name", server_data, server_num)
+        print_server_info("ip", server_data, server_num)
+        print_server_info("port", server_data, server_num)
+        print_server_info("username", server_data, server_num)
+        print_server_info("password", server_data, server_num)
