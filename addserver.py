@@ -29,7 +29,9 @@ ServerList = json.loads(ServerListFileData)
 # 依次输入新服务器的名称、IP、端口、用户名和密码
 server_name = input("Please enter the name of the server: ")
 server_ip = input("Please enter the IP of the server: ")
-server_port = input("Please enter the port of the server: ")
+server_port = input("Please enter the port of the server(leave blank to use default): ")
+if server_port == "" or server_port == " ":
+    server_port = "22"
 server_username = input("Please enter the username of the server: ")
 server_password = input("Please enter the password of the server: ")
 
