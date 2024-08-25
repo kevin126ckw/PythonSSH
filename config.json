@@ -1,1 +1,1 @@
-{"ClearScreenOnDisconnect": true, "ShowPassword": false, "Debug": false}
+{"ClearScreenOnDisconnect": true, "ShowPassword": false, "Debug": false, "OpenSSHBinaryFile": "ssh"}

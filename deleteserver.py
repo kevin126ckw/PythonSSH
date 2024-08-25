@@ -1,10 +1,6 @@
 import json
 from defines import *
 
-# 是否开启调试模式
-ConfigFile = open("config.json", "r")
-ConfigFileData = ConfigFile.read()
-Config = json.loads(ConfigFileData)
 
 debug = Config["Debug"]
 

@@ -79,7 +79,7 @@ while True:
         os.system("clear")
         # 使用ssh登录指定的服务器
         shell = pexpect.spawn(
-            f'ssh -p {ServerList[ServerNum]["port"]} {ServerList[ServerNum]["username"]}@{ServerList[ServerNum]["ip"]}')
+            f'{Config["OpenSSHBinaryFile"]} -p {ServerList[ServerNum]["port"]} {ServerList[ServerNum]["username"]}@{ServerList[ServerNum]["ip"]}')
         # 等待密码提示，输入密码后交互式登录
         shell.expect("password:")
         if debug:
