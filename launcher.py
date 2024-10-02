@@ -1,3 +1,5 @@
+import os
+
 from defines import *
 import addserver
 import deleteserver
@@ -14,10 +16,16 @@ if __name__ == '__main__':
             select = input(colored('Please select: ', 'green'))
             if select == '1':
                 main.main()
+                if Config["ClearScreenOnDisconnect"]:
+                    os.system("clear")
             elif select == '2':
                 addserver.main()
+                if Config["ClearScreenOnDisconnect"]:
+                    os.system("clear")
             elif select == '3':
                 deleteserver.main()
+                if Config["ClearScreenOnDisconnect"]:
+                    os.system("clear")
             elif select == '4':
                 cprint('Bye', 'yellow')
                 exit(0)
